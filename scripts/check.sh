@@ -10,6 +10,10 @@ for path in \
   .claude-plugin/marketplace.json \
   skills/setup/SKILL.md \
   skills/connect/SKILL.md \
+  skills/status/SKILL.md \
+  CHANGELOG.md \
+  review/swobu.yaml \
+  review/README.md \
   README.md SECURITY.md PRIVACY.md LICENSE
 do
   if [ ! -f "$path" ]; then
@@ -18,9 +22,9 @@ do
   fi
 done
 
-skills=$(find skills -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort | tr '\n' ' ')
-if [ "$skills" != "connect setup " ]; then
-  echo "V1 must contain exactly connect and setup skills" >&2
+skills=$(find skills -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
+if [ "$skills" != "$(printf 'connect\nsetup\nstatus')" ]; then
+  echo "V1 must contain exactly connect, setup, and status skills" >&2
   exit 1
 fi
 

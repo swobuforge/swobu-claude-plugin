@@ -3,7 +3,7 @@
   "name": "swobu",
   "displayName": "Swobu Provider Router",
   "version": "0.1.0",
-  "description": "Connect Claude Code to Swobu. Keep one local endpoint while Swobu handles provider switching, compatibility, and fallback; this plugin stores no provider keys.",
+  "description": "Connect Claude Code once to Swobu. Keep routing, compatibility, and fallback behind one stable local endpoint.",
   "author": {
     "name": "Swobu"
   },

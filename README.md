@@ -1,7 +1,8 @@
 # Swobu Provider Router
 
-Keep Claude Code on one stable local endpoint while Swobu manages provider
-routes, compatibility, and fallback behind it.
+**Connect Claude Code once to a Swobu workspace. Provider routing,
+compatibility handling, and fallback stay behind one stable local endpoint. The
+plugin stores no provider keys.**
 
 The plugin is intentionally thin: it connects Claude Code to the installed
 Swobu CLI. It does not store provider keys, edit Claude settings itself, run a
@@ -50,12 +51,16 @@ From the Swobu marketplace repository:
 
 Install at user scope (the default) to make it available across projects.
 
-Once Anthropic accepts the plugin into the official marketplace, installation
-becomes:
+Once Anthropic accepts the reviewed third-party plugin into the community
+marketplace, installation becomes:
 
 ```text
-/plugin install swobu@claude-plugins-official
+/plugin marketplace add anthropics/claude-plugins-community
+/plugin install swobu@claude-community
 ```
+
+The separately curated `claude-plugins-official` catalog has no application
+process; Anthropic may promote reviewed plugins independently.
 
 ## Commands
 
@@ -79,6 +84,11 @@ If Claude Code points elsewhere, the plugin asks before invoking Swobu's
 configuration was verified; send your next Claude request normally and use
 Swobu Activity as runtime proof.
 
+### `/swobu:status`
+
+Runs Swobu's existing headless status command and preserves its own output and
+exit semantics.
+
 ## Examples
 
 ### Existing Swobu setup
@@ -96,8 +106,9 @@ same command again is safe when it is already configured.
 /swobu:connect work
 ```
 
-The workspace name is passed as one opaque argument to Swobu. The plugin does
-not parse Swobu persistence or duplicate workspace selection rules.
+Workspace names must match Swobu's canonical lowercase slug grammar before any
+shell command runs. The plugin does not parse Swobu persistence or duplicate
+workspace selection rules.
 
 ### Existing non-Swobu endpoint
 
@@ -144,7 +155,7 @@ For actual marketplace-install semantics:
 ```
 
 Then restart Claude Code without `--plugin-dir` and invoke `/swobu:setup` and
-`/swobu:connect`.
+`/swobu:status`.
 
 ## Support
 

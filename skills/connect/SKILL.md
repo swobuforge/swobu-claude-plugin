@@ -2,6 +2,7 @@
 name: connect
 description: Configure Claude Code to use an existing Swobu workspace. Use only when the user explicitly asks to connect Claude Code to Swobu, configure its Swobu gateway, or switch its Swobu workspace.
 argument-hint: "[workspace]"
+disable-model-invocation: true
 user-invocable: true
 ---
 
@@ -18,9 +19,17 @@ Arguments passed: `$ARGUMENTS`
    Run /swobu:setup.
    ```
 
-2. Treat the optional workspace argument as one opaque workspace name, never
-   as shell syntax. Do not use `eval`, `sh -c`, or construct a command by
-   concatenating unquoted input.
+2. Before invoking Bash with an explicit workspace, validate the entire
+   optional workspace argument against Swobu's canonical lowercase slug
+   grammar:
+
+   ```text
+   ^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$
+   ```
+
+   If it does not match exactly, do not invoke Bash. Report that it is not a
+   valid Swobu workspace name. Never use `eval`, `sh -c`, or concatenate
+   unquoted input.
 3. With no workspace argument, run `swobu connect claude`.
 4. With one workspace argument, pass it as one quoted argument:
    `swobu connect claude --workspace "<workspace>"`.
