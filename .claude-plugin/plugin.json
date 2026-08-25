@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "swobu",
+  "displayName": "Swobu Provider Router",
+  "version": "0.1.0",
+  "description": "Connect Claude Code to Swobu. Keep one local endpoint while Swobu handles provider switching, compatibility, and fallback; this plugin stores no provider keys.",
+  "author": {
+    "name": "Swobu"
+  },
+  "homepage": "https://swobu.com/",
+  "repository": "https://github.com/swobuforge/swobu-claude-plugin",
+  "license": "AGPL-3.0-only",
+  "keywords": [
+    "claude-code",
+    "provider-switcher",
+    "provider-switching",
+    "provider-router",
+    "provider-routing",
+    "llm-gateway",
+    "llm-router",
+    "fallback",
+    "compatibility"
+  ]
+}

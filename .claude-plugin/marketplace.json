@@ -1,0 +1,31 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "swobu",
+  "description": "Swobu gateway integration for Claude Code provider switching, compatibility, and fallback.",
+  "owner": {
+    "name": "Swobu",
+    "email": "security@swobu.com"
+  },
+  "plugins": [
+    {
+      "name": "swobu",
+      "source": "./",
+      "description": "Connect Claude Code to Swobu. Keep one local endpoint while Swobu handles provider switching, compatibility, and fallback; this plugin stores no provider keys.",
+      "author": {
+        "name": "Swobu"
+      },
+      "category": "development",
+      "tags": [
+        "claude-code",
+        "provider-switcher",
+        "provider-switching",
+        "provider-router",
+        "provider-routing",
+        "llm-gateway",
+        "llm-router",
+        "fallback",
+        "compatibility"
+      ]
+    }
+  ]
+}
