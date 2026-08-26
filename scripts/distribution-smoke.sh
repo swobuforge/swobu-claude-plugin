@@ -5,12 +5,13 @@ ROOT_DIR=$(cd "$(dirname "$0")/.." && pwd)
 TAG=${1:-}
 IMAGE=swobu-claude-plugin-e2e:latest
 ARTIFACTS="$ROOT_DIR/.out/distribution-smoke"
-MARKETPLACE=swobuforge/swobu-claude-plugin
-
 if [[ -z "$TAG" || "$TAG" == -* || "$TAG" =~ [[:space:]] || "$TAG" == *..* || "$TAG" == */ ]]; then
   echo "usage: $0 <published-plugin-tag>" >&2
   exit 2
 fi
+MARKETPLACE=swobuforge/swobu-claude-plugin
+export MARKETPLACE TAG
+
 
 : "${ANTHROPIC_API_KEY:?real Anthropic key required}"
 
