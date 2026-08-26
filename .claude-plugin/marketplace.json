@@ -10,21 +10,26 @@
     {
       "name": "swobu",
       "source": "./",
-      "description": "Connect Claude Code once to Swobu. Keep routing, compatibility, and fallback behind one stable local endpoint.",
+      "description": "Connect Claude Code once to Swobu. Keep provider routing and failover behind one stable local endpoint.",
       "author": {
         "name": "Swobu"
       },
       "category": "development",
       "tags": [
         "claude-code",
-        "provider-switcher",
-        "provider-switching",
-        "provider-router",
-        "provider-routing",
+        "claude-code-plugin",
         "llm-gateway",
-        "llm-router",
+        "ai-gateway",
+        "provider-routing",
+        "provider-switching",
+        "provider-failover",
         "fallback",
-        "compatibility"
+        "anthropic",
+        "bedrock",
+        "vertex-ai",
+        "microsoft-foundry",
+        "llm-router",
+        "swobu"
       ]
     }
   ]

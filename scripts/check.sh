@@ -12,6 +12,9 @@ for path in \
   skills/connect/SKILL.md \
   skills/status/SKILL.md \
   CHANGELOG.md \
+  scripts/distribution-smoke.sh \
+  scripts/check-locales.py \
+  locales.yaml \
   review/swobu.yaml \
   review/README.md \
   README.md SECURITY.md PRIVACY.md LICENSE
@@ -21,6 +24,8 @@ do
     exit 1
   fi
 done
+
+python3 scripts/check-locales.py
 
 skills=$(find skills -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
 if [ "$skills" != "$(printf 'connect\nsetup\nstatus')" ]; then
@@ -43,6 +48,23 @@ fi
 
 if ! grep -Fxq '.out/' .gitignore; then
   echo "runtime smoke output must stay out of the published repository" >&2
+  exit 1
+fi
+
+if [ ! -x scripts/distribution-smoke.sh ]; then
+  echo "distribution smoke must be executable" >&2
+  exit 1
+fi
+
+if grep -Eq -- '--plugin-dir|/plugin:' scripts/distribution-smoke.sh; then
+  echo "distribution smoke must load only the marketplace-installed plugin" >&2
+  exit 1
+fi
+
+if ! grep -Fq 'validate the entire' skills/connect/SKILL.md || \
+   ! grep -Fq '^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$' skills/connect/SKILL.md || \
+   ! grep -Fq 'If it does not match exactly, do not invoke Bash.' skills/connect/SKILL.md; then
+  echo "connect skill must structurally require exact workspace validation" >&2
   exit 1
 fi
 

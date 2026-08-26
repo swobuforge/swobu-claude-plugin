@@ -1,9 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "swobu",
-  "displayName": "Swobu Provider Router",
+  "displayName": "Swobu — Claude Code LLM Gateway",
   "version": "0.1.0",
-  "description": "Connect Claude Code once to Swobu. Keep routing, compatibility, and fallback behind one stable local endpoint.",
+  "description": "Connect Claude Code once to Swobu. Keep provider routing and failover behind one stable local endpoint.",
   "author": {
     "name": "Swobu"
   },
@@ -12,13 +12,18 @@
   "license": "AGPL-3.0-only",
   "keywords": [
     "claude-code",
-    "provider-switcher",
-    "provider-switching",
-    "provider-router",
-    "provider-routing",
+    "claude-code-plugin",
     "llm-gateway",
-    "llm-router",
+    "ai-gateway",
+    "provider-routing",
+    "provider-switching",
+    "provider-failover",
     "fallback",
-    "compatibility"
+    "anthropic",
+    "bedrock",
+    "vertex-ai",
+    "microsoft-foundry",
+    "llm-router",
+    "swobu"
   ]
 }

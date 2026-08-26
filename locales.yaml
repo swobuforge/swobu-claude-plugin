@@ -1,0 +1,80 @@
+# Single source of locale truth for Swobu Claude Plugin & swobu.com discovery lattice.
+# RFC: docs/00-inbox/RFC — Passive Multilingual Acquisition Lattice for Swobu Claude Plugin.md
+
+locales:
+  - code: en
+    readme: README.md
+    label: English
+    site_prefix: /
+    hreflang: en
+    p0: true
+
+  - code: zh-CN
+    readme: README.zh-CN.md
+    label: 简体中文
+    site_prefix: /zh-cn/
+    hreflang: zh-CN
+    p0: true
+
+  - code: ja
+    readme: README.ja.md
+    label: 日本語
+    site_prefix: /ja/
+    hreflang: ja
+    p0: true
+
+  - code: pt-BR
+    readme: README.pt-BR.md
+    label: Português (Brasil)
+    site_prefix: /pt-br/
+    hreflang: pt-BR
+    p0: true
+
+  - code: id
+    readme: README.id.md
+    label: Bahasa Indonesia
+    site_prefix: /id/
+    hreflang: id
+    p0: true
+
+  - code: ko
+    readme: README.ko.md
+    label: 한국어
+    site_prefix: /ko/
+    hreflang: ko
+    p0: true
+
+  - code: es
+    readme: README.es.md
+    label: Español
+    site_prefix: /es/
+    hreflang: es
+    p0: true
+
+  - code: de
+    readme: README.de.md
+    label: Deutsch
+    site_prefix: /de/
+    hreflang: de
+    p0: true
+
+  - code: fr
+    readme: README.fr.md
+    label: Français
+    site_prefix: /fr/
+    hreflang: fr
+    p0: true
+
+  - code: ru
+    readme: README.ru.md
+    label: Русский
+    site_prefix: /ru/
+    hreflang: ru
+    p0: false
+
+  - code: uk
+    readme: README.uk.md
+    label: Українська
+    site_prefix: /uk/
+    hreflang: uk
+    p0: false

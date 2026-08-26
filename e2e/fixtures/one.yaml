@@ -6,9 +6,9 @@ workspaces:
       chat:
         tiers:
           - targets:
-              - id: local
-                model: local
-                protocol: chat_completions
+              - id: claude-local
+                model: claude-local
+                protocol: messages
                 connection:
                   custom:
                     base_url: http://127.0.0.1:18080/v1
