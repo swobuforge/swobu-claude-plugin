@@ -48,7 +48,8 @@ run_case() {
   PATH="$case_path" \
   "$TIMEOUT" 75 "$CLAUDE" --plugin-dir "$ROOT_DIR" --allowedTools Bash \
     --settings "$settings" \
-    --model default --effort low --max-budget-usd 1.00 -p \
+    --settings '{"env":{"ANTHROPIC_BASE_URL":"https://api.anthropic.com"}}' \
+    --model claude-haiku-4-5 --effort low --max-budget-usd 0.30 -p \
     "$prompt Do exactly one skill workflow, report the result, and stop. Do not retry a failed command unless this prompt explicitly confirms replacement." \
     >"$WORK_DIR/$name.out" 2>"$WORK_DIR/$name.err"
 }
