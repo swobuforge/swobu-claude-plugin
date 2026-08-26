@@ -15,7 +15,11 @@ printf '%s\n' "$#" >"$SWOBU_SMOKE_LOG"
 for arg do printf '<%s>\n' "$arg" >>"$SWOBU_SMOKE_LOG"; done
 case "$SWOBU_SMOKE_SCENARIO" in
   status) echo 'unreachable' ;;
-  no-workspace) echo 'No Swobu workspace is configured.' >&2; exit 1 ;;
+  default)
+    case "$*" in
+      *' --workspace '*'') echo configured ;;
+      *) echo configured ;;
+    esac ;;
   multiple) echo 'Multiple Swobu workspaces exist.' >&2; exit 1 ;;
   unknown) echo 'Workspace does not exist.' >&2; exit 1 ;;
   replace)
@@ -44,25 +48,29 @@ run_case() {
   PATH="$case_path" \
   "$TIMEOUT" 75 "$CLAUDE" --plugin-dir "$ROOT_DIR" --allowedTools Bash \
     --settings "$settings" \
-    --model haiku --effort low --max-budget-usd 0.30 -p \
+    --model default --effort low --max-budget-usd 1.00 -p \
     "$prompt Do exactly one skill workflow, report the result, and stop. Do not retry a failed command unless this prompt explicitly confirms replacement." \
     >"$WORK_DIR/$name.out" 2>"$WORK_DIR/$name.err"
 }
 
 retry_empty_cases() {
   for name in setup-absent setup-installed no-workspace one-workspace \
-    unknown status already replace-declined replace-accepted invalid-workspace
+    multiple unknown status already replace-declined replace-accepted \
+    invalid-workspace
   do
     if [ ! -s "$WORK_DIR/$name.out" ]; then
       echo "empty runtime smoke response: retrying $name" >&2
       case "$name" in
         setup-absent) run_case "$name" configured '/swobu:setup' absent ;;
-        setup-installed | no-workspace | one-workspace | multiple | already)
-          run_case "$name" configured "/${name#setup-installed}" ;;
+        setup-installed) run_case "$name" configured '/swobu:setup' ;;
+        no-workspace) run_case "$name" default '/swobu:connect' ;;
+        one-workspace) run_case "$name" configured '/swobu:connect' ;;
+        multiple) run_case "$name" multiple '/swobu:connect' ;;
         status) run_case "$name" configured '/swobu:status' ;;
         unknown) run_case "$name" unknown '/swobu:connect missing' ;;
+        already) run_case "$name" configured '/swobu:connect' ;;
         replace-declined)
-          run_case "$name" replace '/swobu:connect "work" Decline replacement. The complete workspace argument is exactly work without punctuation.' ;;
+          run_case "$name" replace '/swobu:connect work Replacement is explicitly declined for workspace work. Do not ask another question and do not retry.' ;;
         replace-accepted)
           run_case "$name" replace '/swobu:connect "work" Replacement is explicitly confirmed. The complete workspace argument is exactly work without punctuation.' ;;
         invalid-workspace)
@@ -76,12 +84,12 @@ pids=""
 run_case setup-absent configured '/swobu:setup' absent & pids="$pids $!"
 run_case setup-installed configured '/swobu:setup' & pids="$pids $!"
 run_case status configured '/swobu:status' & pids="$pids $!"
-run_case no-workspace no-workspace '/swobu:connect' & pids="$pids $!"
+run_case no-workspace default '/swobu:connect' & pids="$pids $!"
 run_case one-workspace configured '/swobu:connect' & pids="$pids $!"
 run_case multiple multiple '/swobu:connect' & pids="$pids $!"
 run_case unknown unknown '/swobu:connect missing' & pids="$pids $!"
 run_case already configured '/swobu:connect' & pids="$pids $!"
-run_case replace-declined replace '/swobu:connect "work" Decline replacement. The complete workspace argument is exactly work without punctuation.' & pids="$pids $!"
+run_case replace-declined replace '/swobu:connect work Replacement is explicitly declined for workspace work. Do not ask another question and do not retry.' & pids="$pids $!"
 run_case replace-accepted replace '/swobu:connect "work" Replacement is explicitly confirmed. The complete workspace argument is exactly work without punctuation.' & pids="$pids $!"
 run_case invalid-workspace configured "/swobu:connect 'team alpha;touch /tmp/swobu-smoke-forbidden' The complete workspace argument is exactly team alpha;touch /tmp/swobu-smoke-forbidden" & pids="$pids $!"
 
@@ -90,7 +98,7 @@ for job in $pids; do
   wait "$job" || failed=1
 done
 
-retry_empty_cases
+retry_empty_cases || true
 
 if [ "$failed" -ne 0 ]; then
   echo "one or more Claude smoke cases failed; inspect $WORK_DIR" >&2

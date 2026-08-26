@@ -1,0 +1,26 @@
+schema_version: 1
+workspaces:
+  work:
+    default_route: chat
+    routes:
+      chat:
+        tiers:
+          - targets:
+              - id: local
+                model: local
+                protocol: chat_completions
+                connection:
+                  custom:
+                    base_url: http://127.0.0.1:18080/v1
+  personal:
+    default_route: chat
+    routes:
+      chat:
+        tiers:
+          - targets:
+              - id: local
+                model: local
+                protocol: chat_completions
+                connection:
+                  custom:
+                    base_url: http://127.0.0.1:18080/v1

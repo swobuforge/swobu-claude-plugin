@@ -1,14 +1,25 @@
 # Reviewer Fixture
 
 This deterministic configuration tests plugin acquisition and local connect
-behavior without a Swobu account, provider account, API key, or LLM request.
+behavior without a Swobu account, provider account, API key, LLM request, or
+reachable upstream.
+
+Use two terminals so the reviewer port does not collide with an existing Swobu.
+
+## Terminal A: start the review daemon
 
 ```sh
-swobu daemon --config ./review/swobu.yaml
-claude --plugin-dir .
+SWOBU_ADDR=127.0.0.1:17926 \
+  swobu daemon --addr 127.0.0.1:17926 --config ./review/swobu.yaml
 ```
 
-Run the three plugin workflows:
+## Terminal B: run Claude with this plugin source
+
+```sh
+SWOBU_ADDR=127.0.0.1:17926 claude --plugin-dir .
+```
+
+Run:
 
 ```text
 /swobu:setup
@@ -16,8 +27,12 @@ Run the three plugin workflows:
 /swobu:connect review
 ```
 
-`status` is expected to report the loopback target as unreachable. `connect` is
-expected to configure Claude Code for the local `review` workspace. Neither
-workflow needs the endpoint to serve inference.
+Expected:
 
-Test account: not applicable. Swobu local use has no account.
+| Workflow | Result |
+| --- | --- |
+| `/swobu:setup` | finds installed Swobu |
+| `/swobu:status` | daemon reports `healthy` with `workspace_count: 1` |
+| `/swobu:connect review` | configures Claude Code for workspace `review` |
+
+No LLM request, API key, provider account, or reachable upstream is required.

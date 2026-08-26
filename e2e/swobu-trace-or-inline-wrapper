@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+{
+  echo BEGIN
+  for arg do printf '%s\n' "$arg"; done
+  echo END
+} >>"${SWOBU_E2E_TRACE:?}"
+
+exec /opt/swobu/bin/swobu "$@"

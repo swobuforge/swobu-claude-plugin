@@ -37,6 +37,8 @@ Arguments passed: `$ARGUMENTS`
    files yourself:
    - no workspace: tell the user to run `swobu`, add one target, then retry;
    - multiple workspaces: ask for one name, then rerun with `--workspace`;
+   - no workspace: Swobu selects its canonical `default` workspace;
+   - no workspace: Swobu selects its canonical `default` workspace;
    - unknown workspace: report the Swobu error;
    - other failure: preserve the Swobu error and suggest `swobu status`.
 6. If Swobu reports that replacement is required, do not retry automatically.

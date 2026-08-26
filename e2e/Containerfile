@@ -1,0 +1,25 @@
+FROM debian:bookworm-slim
+
+ARG CLAUDE_VERSION
+ARG SWOBU_VERSION
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      bash ca-certificates curl git jq python3 procps \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL "https://raw.githubusercontent.com/swobuforge/swobu/${SWOBU_VERSION}/scripts/install.sh" -o /tmp/install-swobu.sh \
+ && sh /tmp/install-swobu.sh --version "${SWOBU_VERSION}" --bin-dir /opt/swobu/bin --no-start \
+ && rm /tmp/install-swobu.sh \
+ && /opt/swobu/bin/swobu --version
+
+RUN useradd --create-home e2e
+USER e2e
+
+RUN curl -fsSL https://claude.ai/install.sh | bash -s -- "${CLAUDE_VERSION}" \
+ && ~/.local/bin/claude --version
+
+ENV PATH=/home/e2e/.local/bin:/opt/e2e/bin:/opt/swobu/bin:/usr/local/bin:/usr/bin:/bin
+ENV DISABLE_UPDATES=1
+
+WORKDIR /work

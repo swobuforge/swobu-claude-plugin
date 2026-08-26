@@ -1,14 +1,14 @@
 schema_version: 1
 workspaces:
-  review:
+  work:
     default_route: chat
     routes:
       chat:
         tiers:
           - targets:
-              - id: reviewer-local
+              - id: local
                 model: local
                 protocol: chat_completions
                 connection:
                   custom:
-                    base_url: http://127.0.0.1:9/v1
+                    base_url: http://127.0.0.1:18080/v1
