@@ -1,5 +1,5 @@
 # Single source of locale truth for Swobu Claude Plugin & swobu.com discovery lattice.
-# RFC: docs/00-inbox/RFC — Passive Multilingual Acquisition Lattice for Swobu Claude Plugin.md
+# Synchronized authority: ../docs/acquisition/locales.yaml
 
 locales:
   - code: en

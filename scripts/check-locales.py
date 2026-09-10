@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Structural, SEO, and negative contract assertions for multilingual README lattice and marketplace metadata.
-Governing RFC: docs/00-inbox/RFC 040 — Publish the Passive Claude Code Acquisition Lattice.md
+Structural, SEO, and negative contract assertions for multilingual README
+lattice and marketplace metadata. Locale authority is locales.yaml.
 """
 
 import os
@@ -90,7 +90,7 @@ def main():
             print(f"ERROR: {readme_filename} is suspiciously short ({len(doc)} chars)", file=sys.stderr)
             sys.exit(1)
 
-        # 4. RFC 040 Negative Contract Assertions
+        # 4. Public-claim contract assertions
         lower_doc = doc.lower()
         for phrase in FORBIDDEN_TERMS:
             if phrase in lower_doc:
@@ -125,7 +125,7 @@ def main():
                     print(f"ERROR: {m_path} contains forbidden marketplace claim: '{term}'", file=sys.stderr)
                     sys.exit(1)
 
-    print("All 11 localized READMEs and marketplace metadata invariants verified against RFC 040.")
+    print("All 11 localized READMEs and marketplace metadata invariants verified.")
 
 if __name__ == "__main__":
     main()
