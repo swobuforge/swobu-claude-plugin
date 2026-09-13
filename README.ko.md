@@ -49,7 +49,6 @@ Claude Code에서 아래 명령어를 실행하여 플러그인을 설치합니�
 
 ## 참고 자료
 
-- 한국어 가이드: [https://swobu.com/ko/claude-code/llm-gateway/](https://swobu.com/ko/claude-code/llm-gateway/)
 - 공식 영문 기술 문서: [English README](README.md) · [https://swobu.com/docs](https://swobu.com/docs)
 - 메인 저장소: [https://github.com/swobuforge/swobu](https://github.com/swobuforge/swobu)
 - 이슈 보고: [https://github.com/swobuforge/swobu-claude-plugin/issues](https://github.com/swobuforge/swobu-claude-plugin/issues)

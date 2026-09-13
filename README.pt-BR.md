@@ -49,7 +49,6 @@ Se você possuir múltiplos workspaces configurados, especifique o nome desejado
 
 ## Recursos e Documentação
 
-- Guia em Português: [https://swobu.com/pt-br/claude-code/llm-gateway/](https://swobu.com/pt-br/claude-code/llm-gateway/)
 - Documentação técnica completa em inglês: [English README](README.md) · [https://swobu.com/docs](https://swobu.com/docs)
 - Repositório principal: [https://github.com/swobuforge/swobu](https://github.com/swobuforge/swobu)
 - Relatar problemas: [https://github.com/swobuforge/swobu-claude-plugin/issues](https://github.com/swobuforge/swobu-claude-plugin/issues)

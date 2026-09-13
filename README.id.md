@@ -49,7 +49,6 @@ Jika Anda memiliki beberapa workspace Swobu, tentukan workspace secara eksplisit
 
 ## Sumber Daya & Dokumentasi
 
-- Panduan Bahasa Indonesia: [https://swobu.com/id/claude-code/llm-gateway/](https://swobu.com/id/claude-code/llm-gateway/)
 - Dokumentasi teknis lengkap (Bahasa Inggris): [English README](README.md) · [https://swobu.com/docs](https://swobu.com/docs)
 - Repositori Utama: [https://github.com/swobuforge/swobu](https://github.com/swobuforge/swobu)
 - Laporan Masalah (Issues): [https://github.com/swobuforge/swobu-claude-plugin/issues](https://github.com/swobuforge/swobu-claude-plugin/issues)

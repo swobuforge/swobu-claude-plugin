@@ -49,7 +49,6 @@ Falls mehrere Workspaces konfiguriert sind, können Sie den gewünschten Workspa
 
 ## Ressourcen & Dokumentation
 
-- Deutscher Leitfaden: [https://swobu.com/de/claude-code/llm-gateway/](https://swobu.com/de/claude-code/llm-gateway/)
 - Vollständige englische Dokumentation: [English README](README.md) · [https://swobu.com/docs](https://swobu.com/docs)
 - Haupt-Repository: [https://github.com/swobuforge/swobu](https://github.com/swobuforge/swobu)
 - Problem melden: [https://github.com/swobuforge/swobu-claude-plugin/issues](https://github.com/swobuforge/swobu-claude-plugin/issues)

@@ -49,7 +49,6 @@ Swobu 改变了这一模式：只需将 Claude Code 与 Swobu 连接一次，后
 
 ## 相关资源
 
-- 简体中文网关指南：[https://swobu.com/zh-cn/claude-code/llm-gateway/](https://swobu.com/zh-cn/claude-code/llm-gateway/)
 - 完整英文技术文档：[English README](README.md) · [https://swobu.com/docs](https://swobu.com/docs)
 - 主项目仓库：[https://github.com/swobuforge/swobu](https://github.com/swobuforge/swobu)
 - 问题反馈：[https://github.com/swobuforge/swobu-claude-plugin/issues](https://github.com/swobuforge/swobu-claude-plugin/issues)

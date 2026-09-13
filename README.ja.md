@@ -49,7 +49,6 @@ Claude Code 内で次のコマンドを実行してプラグインをインス�
 
 ## リソースとドキュメント
 
-- 日本語ガイド: [https://swobu.com/ja/claude-code/llm-gateway/](https://swobu.com/ja/claude-code/llm-gateway/)
 - 英語公式ドキュメント: [English README](README.md) · [https://swobu.com/docs](https://swobu.com/docs)
 - メインリポジトリ: [https://github.com/swobuforge/swobu](https://github.com/swobuforge/swobu)
 - Issue 報告: [https://github.com/swobuforge/swobu-claude-plugin/issues](https://github.com/swobuforge/swobu-claude-plugin/issues)

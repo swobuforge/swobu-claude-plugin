@@ -49,7 +49,6 @@ Swobu меняет этот процесс: подключите Claude Code к 
 
 ## Ресурсы и документация
 
-- Руководство на русском языке: [https://swobu.com/ru/claude-code/llm-gateway/](https://swobu.com/ru/claude-code/llm-gateway/)
 - Полная техническая документация на английском: [English README](README.md) · [https://swobu.com/docs](https://swobu.com/docs)
 - Основной репозиторий: [https://github.com/swobuforge/swobu](https://github.com/swobuforge/swobu)
 - Сообщить о проблеме: [https://github.com/swobuforge/swobu-claude-plugin/issues](https://github.com/swobuforge/swobu-claude-plugin/issues)

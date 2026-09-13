@@ -49,7 +49,6 @@ Swobu пропонує краще рішення: підключіть Claude Co
 
 ## Ресурси та документація
 
-- Інструкція українською: [https://swobu.com/uk/claude-code/llm-gateway/](https://swobu.com/uk/claude-code/llm-gateway/)
 - Повна технічна документація англійською: [English README](README.md) · [https://swobu.com/docs](https://swobu.com/docs)
 - Головний репозиторій: [https://github.com/swobuforge/swobu](https://github.com/swobuforge/swobu)
 - Повідомити про проблему: [https://github.com/swobuforge/swobu-claude-plugin/issues](https://github.com/swobuforge/swobu-claude-plugin/issues)
